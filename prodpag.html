@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Glow Traces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7EDEB;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-wrapper {
+            background-color: #D3B0A0; /* 背景色 */
+            padding-bottom: 10px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #A67E6B;
+            text-align: center;
+            padding: 20px 0;
+            color: #4A2E2B;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #4A2E2B;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #F1E6D5;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            margin: 0 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #4A2E2B;
+            font-size: 18px;
+        }
+
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .right img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+
+        .navbar .right span {
+            font-size: 18px;
+        }
+
+        .breadcrumb {
+            background-color: #F1E6D5;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #4A2E2B;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #4A2E2B;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+        }
+
+        .product-section {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: row;
+            max-width: 65%;
+        }
+
+        .thumbnails {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+
+        .thumbnails img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            border: 2px solid #B8938D;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .thumbnails img.active {
+            border: 2px solid #4A2E2B;
+        }
+
+        .main-image {
+            flex-grow: 1;
+        }
+
+        .main-image img {
+            width: 100%;
+            border: 2px solid #B8938D;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details {
+            flex: 1;
+            max-width: 30%;
+            margin-left: 20px;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-details h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .product-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .product-details ul li {
+            margin-bottom: 10px;
+        }
+
+        .product-details .price {
+            font-size: 24px;
+            color: #B8938D;
+            margin: 20px 0;
+        }
+
+        .product-details label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .product-details select,
+        .product-details input[type="text"],
+        .product-details input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity button {
+            background-color: #B8938D;
+            border: none;
+            color: #FFFFFF;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+        }
+
+        .add-to-cart {
+            background-color: #B8938D;
+            border: none;
+            color: #FFFFFF;
+            padding: 15px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* 頁籤樣式 */
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            background-color: #F1E6D5;
+            border-bottom: 2px solid #A67E6B;
+            justify-content: flex-start; /* 左對齊 */
+        }
+
+        .tab {
+            padding: 10px 20px;
+            border: 1px solid #A67E6B;
+            border-bottom: none;
+            margin-right: 5px;
+            background-color: #F1E6D5;
+            color: #4A2E2B;
+            transition: background-color 0.3s ease;
+        }
+
+        .tab.active {
+            background-color: #A67E6B;
+            color: #FFFFFF;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border: 1px solid #A67E6B;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* 新增內容區塊的樣式 */
+        .shipping-section,
+        .payment-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .shipping-section h2,
+        .payment-section h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .shipping-section ul,
+        .payment-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .shipping-section ul li,
+        .payment-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .similar-products-section {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .similar-products-section h2 {
+            font-size: 20px;
+            margin-top: 0;
+            text-align: left; /* 修改為左對齊 */
+        }
+
+        .similar-products-section .product-card {
+            display: inline-block;
+            width: 22%; /* 修改為百分比 */
+            margin: 1%;
+            text-align: center;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 10px;
+        }
+
+        .similar-products-section .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .similar-products-section .product-card p {
+            margin: 10px 0 0 0;
+            font-size: 16px;
+        }
+
+        /* ........................................... */
+        .footer .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer .footer-column {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer .footer-column h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .footer .footer-column p,
+        .footer .footer-column a {
+            color: #4A2E2B;
+            text-decoration: none;
+        }
+
+        .footer .footer-column a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-wrapper">
+        <div class="header">
+            <h1>山霞飾蹤 Mountain glow traces</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">商品列表</a></li>
+                <li><a href="#">特別企劃</a></li>
+                <li><a href="#">設計理念</a></li>
+                <li class="right"><a href="#"><img src="user-icon.png" alt="User Icon"></a></li>
+                <li class="right"><a href="#"><img src="cart-icon.png" alt="Cart Icon"><span>(0)</span></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="breadcrumb">
+        <a href="#">首頁</a> &gt; <a href="#">商品列表</a> &gt; 商品名稱
+    </div>
+    <main class="main-content">
+        <div class="product-section">
+            <div class="product-images">
+                <div class="thumbnails">
+                    <img src="thumbnail1.png" alt="Thumbnail 1" class="active" onclick="changeImage('image1.png', this)">
+                    <img src="thumbnail2.png" alt="Thumbnail 2" onclick="changeImage('image2.png', this)">
+                    <img src="thumbnail3.png" alt="Thumbnail 3" onclick="changeImage('image3.png', this)">
+                </div>
+                <div class="main-image">
+                    <img src="image1.png" alt="Main Image" id="mainProductImage">
+                </div>
+            </div>
+            <div class="product-details">
+                <h2>商品名稱</h2>
+                <ul>
+                    <li>商品特色</li>
+                    <li>材質: 銀 / 黃銅 / 其他</li>
+                    <li>尺寸: 10x10x5 cm</li>
+                    <li>重量: 200g</li>
+                </ul>
+                <div class="price">NT$ 1,000</div>
+                <label for="size">尺寸</label>
+                <select id="size" name="size">
+                    <option value="small">小</option>
+                    <option value="medium">中</option>
+                    <option value="large">大</option>
+                </select>
+                <label for="quantity">數量</label>
+                <div class="quantity">
+                    <button onclick="changeQuantity(-1)">-</button>
+                    <input type="number" id="quantity" name="quantity" value="1">
+                    <button onclick="changeQuantity(1)">+</button>
+                </div>
+                <button class="add-to-cart">加入購物車</button>
+            </div>
+        </div>
+        <!-- 新增頁籤區塊 -->
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('description')">商品描述</div>
+            <div class="tab" onclick="showTab('shipping')">配送及付款方式</div>
+        </div>
+
+        <!-- 商品描述區塊 -->
+        <div id="description" class="tab-content active">
+            <!-- 商品描述的內容 -->
+            <p>這裡是商品描述的內容。</p>
+        </div>
+
+        <!-- 配送及付款方式區塊 -->
+        <div id="shipping" class="tab-content">
+            <div class="shipping-section">
+                <h2>配送方式</h2>
+                <ul>
+                    <li>中華郵政</li>
+                    <li>黑貓</li>
+                    <li>7-11 取貨付款</li>
+                    <li>7-11 取貨不付款</li>
+                    <li>全家 取貨付款</li>
+                    <li>全家 取貨不付款</li>
+                </ul>
+            </div>
+            <div class="payment-section">
+                <h2>付款方式</h2>
+                <ul>
+                    <li>信用卡（VISA / Master / JCB / 銀聯卡）</li>
+                    <li>7-11 取貨付款</li>
+                    <li>全家 取貨付款</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <div class="similar-products-section">
+        <h2>類似商品</h2>
+        <div class="product-card">
+            <img src="similar1.png" alt="類似商品 1">
+            <p>商品名稱 1</p>
+        </div>
+        <div class="product-card">
+            <img src="similar2.png" alt="類似商品 2">
+            <p>商品名稱 2</p>
+        </div>
+        <div class="product-card">
+            <img src="similar3.png" alt="類似商品 3">
+            <p>商品名稱 3</p>
+        </div>
+    </div>
+    <script>
+        function changeImage(image, element) {
+            document.getElementById('mainProductImage').src = image;
+            var thumbnails = document.querySelectorAll('.thumbnails img');
+            thumbnails.forEach(function(img) {
+                img.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        function changeQuantity(amount) {
+            var quantityInput = document.getElementById('quantity');
+            var currentQuantity = parseInt(quantityInput.value);
+            var newQuantity = currentQuantity + amount;
+            if (newQuantity >= 1) {
+                quantityInput.value = newQuantity;
+            }
+        }
+
+        function showTab(tabId) {
+            // 隱藏所有 tab-content
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+
+            // 移除所有 tab 的 active 狀態
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // 顯示選中的 tab-content 並設置 tab 為 active
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+
+    
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About Us</h3>
+            <p>Information about the company.</p>
+        </div>
+        <div class="footer-column">
+            <h3>Contact</h3>
+            <p>Email: contact@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+        </div>
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <p><a href="#">Facebook</a></p>
+            <p><a href="#">Instagram</a></p>
+            <p><a href="#">Twitter</a></p>
+        </div>
+    </div>
+    <p>&copy; 2024 Mountain Glow Traces. All rights reserved.</p>
+</footer>
+</body>
+</html>

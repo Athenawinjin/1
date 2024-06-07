@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexandria Collective</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            background-color: #fff;
+        }
+
+        .main-content .text-section {
+            max-width: 50%;
+        }
+
+        .main-content .text-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            margin: 10px 0;
+            width: 300px;
+        }
+
+        .main-content .text-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin: 10px 0;
+            color: #999;
+        }
+
+        .main-content .text-section .learn-more-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #c0a28b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .main-content .image-section img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .image-left {
+            max-width: 40%;
+            margin-right: 20px;
+        }
+
+        .image-right {
+            max-width: 40%;
+            margin-left: 20px;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-content .text-section,
+            .main-content .image-section {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .image-left,
+            .image-right {
+                margin: 20px 0;
+            }
+
+            .main-content .text-section {
+                text-align: center;
+            }
+        }
+
+        /* 區塊02 */
+        .who-we-are {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 75vh;
+            /* 將高度設置為原本的一半 */
+            background-color: #c0a28b;
+        }
+
+        .who-we-are .text-section {
+            max-width: 50%;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .who-we-are .text-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin: 0 0 10px;
+        }
+
+        .who-we-are .text-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+
+        .who-we-are .text-section .inquire-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .who-we-are .image-section {
+            max-width: 50%;
+            height: 100%;
+        }
+
+        .who-we-are .image-section img {
+            width: 700px;
+            height: 800px;
+            object-fit: cover;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .who-we-are {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .who-we-are .text-section,
+            .who-we-are .image-section {
+                max-width: 100%;
+            }
+
+            .who-we-are .image-section {
+                height: auto;
+            }
+
+            .who-we-are .image-section img {
+                height: auto;
+                width: 100%;
+            }
+
+            .who-we-are .text-section {
+                padding: 20px;
+                text-align: center;
+            }
+        }
+
+        /* 區塊02 */
+
+        /* 區塊03 */
+        main {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #6C5B5B;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .class-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .class-item {
+            border-radius: 8px;
+            overflow: hidden;
+            width: 22%;
+            min-width: 200px;
+        }
+
+        .class-item img {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .class-info {
+            background-color: #B4B2A6;
+            padding: 15px;
+        }
+
+        .class-info h2 {
+            color: #FFFFFF;
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .class-info p {
+            color: #FFFFFF;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .sign-up-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #FFFFFF;
+            background-color: #6C5B5B;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sign-up-button:hover {
+            background-color: #5A4949;
+        }
+
+        /* 區塊03 */
+
+        /* 區塊04 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: calc(30% - 5px);
+            box-sizing: border-box;
+            padding: 10px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .image-container img.primary-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .image-container img.secondary-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            z-index: 2;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .image-container:hover img.primary-image {
+            transform: scale(1.1);
+            opacity: 0;
+        }
+
+        .image-container:hover img.secondary-image {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .product-title {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .product-price {
+            margin-top: 5px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        @media (max-width: 1024px) {
+            .product-item {
+                width: calc(25% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-item {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-item {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 320px) {
+            .product-item {
+                width: 100%;
+            }
+        }
+        /* 區塊04 */
+
+        /* 區塊05 */
+        .cont {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            width: calc(25% - 10px);
+            box-sizing: border-box;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-title {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #777;
+            margin: 10px 0;
+        }
+
+        .product-details {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            background-color: #E1CFC0;
+            color: #684E45;
+            transition: background-color 0.3s;
+        }
+
+        .product-details:hover {
+            background-color: #684E45;
+            color: #fff;
+        }
+
+        .circle-icon {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1024px) {
+            .product-item {
+                width: calc(33.33% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-item {
+                width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-item {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .product-modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-modal-price {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .product-modal-description {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .color-options, .quantity-selector {
+            margin-bottom: 20px;
+        }
+
+        .color-options button, .quantity-selector button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .add-to-cart {
+            padding: 10px 20px;
+            background-color: #E1CFC0;
+            color: #684E45;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-to-cart:hover {
+            background-color: #684E45;
+            color: #fff;
+        }
+
+        .header {
+            background-color: #d8c2ad;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 999;
+        }
+
+        .header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .header .inquire-button {
+            padding: 10px 20px;
+            background-color: #c0a28b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .cart-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+
+        .cart-modal {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            z-index: 1002;
+        }
+
+        .cart-modal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-modal-item img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .checkout-button {
+            padding: 10px;
+            background-color: #E1CFC0;
+            color: #684E45;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .checkout-button:hover {
+            background-color: #684E45;
+            color: #fff;
+        }
+        /* 區塊05 */
+        /* footer */
+        .footer-img {
+    background-color: #EDEDED;
+    padding: 10px 0;
+}
+
+.header-images {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-images img {
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+}
+
+main {
+    background-color: #F4E3D7;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.main-cont p:first-of-type {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-cont p {
+    font-size: 16px;
+    color: #333;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+footer {
+    background-color: #D1B1A6;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 0;
+}
+        /* footer */
+
+        body{
+            font-family: 'Playfair Display', 'Lora';
+        }
+
+        /* 區塊06 */
+        .conta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .item {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .item img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .item p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+        @media (min-width: 600px) {
+            .item {
+                padding: 60px;
+            }
+            .item img {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 20px;
+            }
+            .item p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo"><a href=""><img src="./images/05.png" alt=""></a></div>
+        <nav>
+            <a href="#">關於我們</a>
+            <a href="./proditem.html">所有款式</a>
+            <a href="#">依照水晶效果</a>
+            <a href="#">依照水晶色系</a>
+        </nav>
+        <div class="cart-icon" onclick="toggleCartModal()">
+            <img src="cart-icon.png" alt="購物車">
+            <div class="cart-count" id="cartCount">0</div>
+            <div class="cart-modal" id="cartModal">
+                <div class="cart-modal-items" id="cartModalItems"></div>
+                <div class="checkout-button">訂單結帳</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="image-section image-left">
+            <img src="./images/01.png" alt="Image 1">
+        </div>
+        <div class="text-section">
+            <h2>Give your best self,
+                The best lifestyle accessories</h2>
+            <h1>給最好的自己，<br>最好的生活配飾</h1>
+            <a href="#" class="learn-more-button">Learn More</a>
+        </div>
+        <div class="image-section image-right">
+            <img src="./images/02.png" alt="Image 2">
+        </div>
+    </div>
+
+    <!-- 區塊02 -->
+    <div class="who-we-are">
+        <div class="text-section">
+            <h1>認識水晶</h1>
+            <p>當你想要為自己的生活增添一絲奢華與神秘感時，水晶手鍊絕對是一個不容忽視的選擇。<br>
+                水晶手鍊不僅僅是一種飾品，更是一種象徵，代表著靈性、平衡和能量。<br>
+                這些美麗的寶石被人們用來平衡身心靈，提高意識水平，甚至據說還有治療和保護的功效。<br><br>
+                水晶手鍊的美妙之處在於它的多樣性。無論你喜歡哪種顏色或形狀，總能找到一款適合你的水晶手鍊。<br>
+                從透明的水晶到色彩繽紛的紅寶石，每一種水晶都散發著獨特的能量和魅力。<br>
+                你可以根據自己的喜好或需求選擇不同的水晶，例如玫瑰石英用於愛情和關係，紫水晶用於情緒平衡，黑曜石用於保護等等。<br><br>
+
+                除了美觀和功效之外，水晶手鍊還具有一定的文化意義和歷史價值。<br>
+                許多古老文明都將水晶視為聖物，認為它具有神奇的力量和能量。<br>
+                因此，佩戴水晶手鍊不僅可以讓你展現個人風格，還能讓你感受到古老智慧的力量和祝福。<br><br>
+
+                無論你是想要提升個人能量場，還是只是想要增添一些亮點和魅力，水晶手鍊都能滿足你的需求。<br>
+                它不僅是一種飾品，更是一種生活方式的象徵，提醒著我們關注內在的平衡和和諧。<br>
+                讓水晶手鍊成為你生活中的一部分，感受它帶來的神奇和美好！
+            </p>
+            <a href="./02.html" class="inquire-button">查閱詳情</a>
+        </div>
+        <div class="image-section">
+            <img src="./images/03.png" alt="Interior Image">
+        </div>
+    </div>
+    <!-- 區塊02 -->
+
+    <!-- 區塊03 -->
+    <main>
+        <h1>Let's Get Started</h1>
+        <div class="class-grid">
+            <div class="class-item">
+                <img src="./images/06.png" alt="Yoga Form 1" data-hover="./images/06-1.png">
+                <div class="class-info">
+                    <h2>紫晶幽夢：水晶中的神秘色彩</h2>
+                    <p>紫水晶散發出神秘的紫色光芒，象徵著智慧、平靜和直覺。</p>
+                </div>
+            </div>
+            <div class="class-item">
+                <img src="./images/07.png" alt="Yoga Form 2" data-hover="./images/07-1.png">
+                <div class="class-info">
+                    <h2>柔情魅影：粉水晶的溫柔光芒</h2>
+                    <p>粉水晶是溫柔的愛之石，象徵著愛情、和平與柔和的能量。</p>
+                </div>
+            </div>
+            <div class="class-item">
+                <img src="./images/08.png" alt="Yoga Form 3" data-hover="./images/08-1.png">
+                <div class="class-info">
+                    <h2>海藍憧憬：寶石的海洋之夢</h2>
+                    <p>海藍寶石是一種美麗的藍色寶石，代表著清澈、安靜和寧靜。</p>
+                </div>
+            </div>
+            <div class="class-item">
+                <img src="./images/09.png" alt="Yoga Form 4" data-hover="./images/09-1.png">
+                <div class="class-info">
+                    <h2>月影微光：月光石的神秘魅力</h2>
+                    <p>月光石是石榴石家族的一員，散發出奇特的藍色光澤，象徵著靈性、平靜和直覺。</p>
+                </div>
+            </div>
+        </div>
+        <button class="sign-up-button">SIGN UP</button>
+    </main>
+    <script>
+        document.querySelectorAll('.class-item img').forEach(img => {
+            const originalSrc = img.src;
+            const hoverSrc = img.getAttribute('data-hover');
+
+            img.addEventListener('mouseover', () => {
+                img.src = hoverSrc;
+            });
+
+            img.addEventListener('mouseout', () => {
+                img.src = originalSrc;
+            });
+        });
+    </script>
+    <!-- 區塊03 -->
+
+
+    <!-- 區塊04 -->
+    <div class="container">
+        <h1 class="title">熱銷款式</h1>
+        <div class="product-grid">
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="./images/product/21.png" alt="草莓晶手練" class="primary-image">
+                    <img src="./images/product/21-1.png" class="secondary-image" alt="草莓晶手練 - hover">
+                </div>
+                <p class="product-title">晶莓心曦 | 草莓的清甜，晶瑩的心意</p>
+                <p class="product-title">A5 草莓晶手鍊</p>
+                <p class="product-price">$2,690</p>
+            </div>
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="./images/product/01.png" alt="A5 櫻花瑪瑙手鍊" class="primary-image">
+                    <img src="./images/product/01-1.png" class="secondary-image" alt="A5 櫻花瑪瑙手鍊 - hover">
+                </div>
+                <p class="product-title">春色草櫻 | 瑪瑙綻放的花海</p>
+                <p class="product-title">A5 櫻花瑪瑙手鍊</p>
+                <p class="product-price">$1,500</p>
+            </div>
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="./images/product/20.png" alt="A5 貓眼石手鍊" class="primary-image">
+                    <img src="./images/product/20-1.png" class="secondary-image" alt="A5 貓眼石手鍊 - hover">
+                </div>
+                <p class="product-title">幽靈微光 | 貓眼石的神秘魅力</p>
+                <p class="product-title">A5 貓眼石手鍊</p>
+                <p class="product-price">$1,890</p>
+            </div>
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="./images/product/02.png" alt="A5 綠幽靈手鍊" class="primary-image">
+                    <img src="./images/product/02-1.png" class="secondary-image" alt="A5 綠幽靈手鍊 - hover">
+                </div>
+                <p class="product-title">C綠幽靈之舞 | 翡翠的靈魂迴旋</p>
+                <p class="product-title">A5 綠幽靈手鍊</p>
+                <p class="product-price">$1,360</p>
+            </div>
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="./images/product/03.png" alt="A5 紫水晶手鍊" class="primary-image">
+                    <img src="./images/product/03-1.png" class="secondary-image" alt="A5 紫水晶手鍊 - hover">
+                </div>
+                <p class="product-title">紫色夢幻 | 水晶的神秘魔力</p>
+                <p class="product-title">A5 紫水晶手鍊</p>
+                <p class="product-price">$1,890</p>
+            </div>
+            <div class="product-item">
+                <div class="image-container">
+                    <img src="./images/product/04.png" alt="如願 | A117純黃水晶太陽石晶手鍊" class="primary-image">
+                    <img src="./images/product/04-1.png" class="secondary-image" alt="如願 | A117純黃水晶太陽石晶手鍊 - hover">
+                </div>
+                <p class="product-title">紅魂流轉 | 玉髓的溫暖力量</p>
+                <p class="product-title">紅玉隨手鍊</p>
+                <p class="product-price">$1,180</p>
+            </div>
+        </div>
+    </div>
+    <!-- 區塊04 -->
+
+    <!-- 區塊05 -->
+    <div class="cont">
+        <h1 class="title">星辰之珠：琉璃漣漪，宇宙魔法</h1>
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="./images/product/22.png" alt="NUYASA MBUAYSE">
+                <p class="product-title">晝夜留香琉璃珠手鍊</p>
+                <p class="product-description">晝夜留香：天地間的彩虹幻想</p>
+                <p class="product-price">$100</p>
+                <a href="#" class="product-details" onclick="openModal('晝夜留香琉璃珠手鍊', 'NT$100', '晝夜留香：天地間的彩虹幻想')">加入購物車</a>
+            </div>
+            <!-- Add more product items here -->
+            <div class="product-item">
+                <img src="./images/product/23.png" alt="NUYASA MBUAYSE">
+                <p class="product-title">薰風彩虹琉璃珠手鍊</p>
+                <p class="product-description">薰風彩虹：天地之間的魔法之珠</p>
+                <p class="product-price">$100</p>
+                <a href="#" class="product-details" onclick="openModal('薰風彩虹琉璃珠手鍊', 'NT$100', '晝夜留香：天地間的彩虹幻想')">加入購物車</a>
+            </div>
+            <div class="product-item">
+                <img src="./images/product/23.png" alt="NUYASA MBUAYSE">
+                <p class="product-title">炎心紫影琉璃珠手鍊</p>
+                <p class="product-description">炎心紫影：琉璃之魂，火焰之心</p>
+                <p class="product-price">$100</p>
+                <a href="#" class="product-details" onclick="openModal('炎心紫影琉璃珠手鍊', 'NT$100', '炎心紫影：琉璃之魂，火焰之心')">加入購物車</a>
+            </div>
+            <div class="product-item">
+                <img src="./images/product/23.png" alt="NUYASA MBUAYSE">
+                <p class="product-title">蒼穹之光琉璃珠手鍊</p>
+                <p class="product-description">蒼穹之光：海天一色，琉璃之夢</p>
+                <p class="product-price">$100</p>
+                <a href="#" class="product-details" onclick="openModal('蒼穹之光琉璃珠手鍊', 'NT$100', '蒼穹之光：海天一色，琉璃之夢')">加入購物車</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 class="product-modal-title" id="modalProductTitle"></h2>
+            <p class="product-modal-price" id="modalProductPrice"></p>
+            <div class="quantity-selector">
+                <button onclick="changeQuantity(-1)">-</button>
+                <input type="number" id="quantityInput" value="1" min="1" style="width: 40px;">
+                <button onclick="changeQuantity(1)">+</button>
+            </div>
+            <button class="add-to-cart" onclick="addToCart()">加入購物車</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let cartCount = 0;
+
+        function openModal(title, price, description) {
+            document.getElementById('modalProductTitle').innerText = title;
+            document.getElementById('modalProductPrice').innerText = price;
+            document.getElementById('productModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = "none";
+        }
+
+        function changeQuantity(amount) {
+            var quantityInput = document.getElementById('quantityInput');
+            var currentQuantity = parseInt(quantityInput.value);
+            var newQuantity = currentQuantity + amount;
+            if (newQuantity < 1) {
+                newQuantity = 1;
+            }
+            quantityInput.value = newQuantity;
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function addToCart() {
+            const title = document.getElementById('modalProductTitle').innerText;
+            const price = document.getElementById('modalProductPrice').innerText;
+            const quantity = document.getElementById('quantityInput').value;
+
+            const item = { title, price, quantity };
+
+            cart.push(item);
+            cartCount++;
+            updateCartCount();
+            updateCartModal();
+
+            closeModal();
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').innerText = cartCount;
+        }
+
+        function updateCartModal() {
+            const cartModalItems = document.getElementById('cartModalItems');
+            cartModalItems.innerHTML = '';
+
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-modal-item';
+
+                const itemInfo = document.createElement('div');
+                itemInfo.innerHTML = `
+                    <img src="image1.jpg" alt="${item.title}">
+                    <div>
+                        <p>${item.title}</p>
+                        <p>${item.quantity} x ${item.price}</p>
+                    </div>
+                `;
+
+                cartItem.appendChild(itemInfo);
+                cartModalItems.appendChild(cartItem);
+            });
+        }
+
+        function toggleCartModal() {
+            const cartModal = document.getElementById('cartModal');
+            cartModal.style.display = cartModal.style.display === 'none' || cartModal.style.display === '' ? 'block' : 'none';
+        }
+
+        document.querySelector('.checkout-button').addEventListener('click', function() {
+            alert('Proceeding to checkout');
+        });
+    </script>
+    <!-- 區塊05 -->
+
+    <!-- 區塊06 -->
+    
+    <!-- 區塊06 -->
+
+    <!-- footer -->
+    <div class="footer-img">
+        <div class="header-images">
+            <img src="./images/13.png" alt="Image 1">
+            <img src="./images/14.png" alt="Image 2">
+            <img src="./images/15.png" alt="Image 3">
+            <img src="./images/16.png" alt="Image 4">
+        </div>
+    </ㄎ>
+    <main>
+        <div class="main-cont">
+            <p>Stuck planning not finding?</p>
+            <p>With over 50 years in the industry, our team of experts is here to help...</p>
+        </div>
+    </main>
+    <footer>
+        <p>Footer content goes here...</p>
+    </footer>
+    <!-- footer -->
+    </div>
+</body>
+
+</html>
