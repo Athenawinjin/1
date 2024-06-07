@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7EDEB;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-wrapper {
+            background-color: #D3B0A0; /* 背景色 */
+            padding-bottom: 10px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #A67E6B;
+            text-align: center;
+            padding: 20px 0;
+            color: #4A2E2B;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #4A2E2B;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #F1E6D5;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            margin: 0 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #4A2E2B;
+            font-size: 18px;
+        }
+
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .right img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+
+        .navbar .right span {
+            font-size: 18px;
+        }
+
+        .footer {
+            background-color: #D3B0A0;
+            color: #4A2E2B;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer .footer-column {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer .footer-column h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .footer .footer-column p,
+        .footer .footer-column a {
+            color: #4A2E2B;
+            text-decoration: none;
+        }
+
+        .footer .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .step-indicator div {
+            width: 30px;
+            height: 30px;
+            background-color: #D3B0A0;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            color: #FFFFFF;
+            margin: 0 5px;
+        }
+
+        .step-indicator div.active {
+            background-color: #A67E6B;
+        }
+
+        .checkout-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-summary, .shipping-payment, .order-summary {
+            background-color: #F1E6D5;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .cart-summary table, .order-summary table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-summary th, .cart-summary td, .order-summary th, .order-summary td {
+            border: 1px solid #A67E6B;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .cart-summary th {
+            background-color: #D3B0A0;
+            color: #FFFFFF;
+        }
+
+        .shipping-payment-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .shipping-payment {
+            width: 60%;
+        }
+
+        .order-summary {
+            width: 35%;
+        }
+
+        .shipping-payment select, .shipping-payment input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .shipping-payment .shipping-options {
+            margin-top: 20px;
+        }
+
+        .shipping-payment .shipping-options select {
+            width: 100%;
+        }
+
+        .order-summary .order-total {
+            text-align: right;
+        }
+
+        .order-summary .order-total div {
+            margin-bottom: 10px;
+        }
+
+        .order-summary .order-total .total {
+            font-weight: bold;
+        }
+
+        .proceed-to-checkout {
+            text-align: right;
+        }
+
+        .proceed-to-checkout button {
+            background-color: #A67E6B;
+            border: none;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            cursor: pointer;
+        }
+
+        /* New Styles for Shipping Method Section */
+        .shipping-payment {
+            display: flex;
+            flex-direction: column;
+            background-color: #F9F5F4;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .shipping-payment h2 {
+            margin-bottom: 10px;
+            color: #4A2E2B;
+        }
+
+        .shipping-payment label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4A2E2B;
+        }
+
+        .shipping-payment select, .shipping-payment input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #D3B0A0;
+            border-radius: 4px;
+        }
+
+        .shipping-payment input[type="text"] {
+            display: inline-block;
+            width: calc(100% - 50px); /* Adjust width based on button size */
+            vertical-align: middle;
+        }
+
+        .shipping-payment button {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: none;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .shipping-payment button img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="main-content">
+        <div class="step-indicator">
+            <div class="active">1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="checkout-section">
+            <div class="cart-summary">
+                <h2>購物車 (1件商品)</h2>
+                <table>
+                    <tr>
+                        <th>商品詳情</th>
+                        <th>單件價格</th>
+                        <th>數量</th>
+                        <th>小計</th>
+                    </tr>
+                    <tr>
+                        <td><img src="product.jpg" alt="Product" width="100"></td>
+                        <td>NT$200</td>
+                        <td>
+                            <button>-</button>
+                            <input type="number" value="1">
+                            <button>+</button>
+                        </td>
+                        <td>NT$200</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="shipping-payment-container">
+                <div class="shipping-payment">
+                    <h2>選擇付款與送貨方式</h2>
+                    <div>
+                        <label for="shipping-method">寄送方式</label>
+                        <select id="shipping-method">
+                            <option value="宅配到府">宅配到府</option>
+                            <option value="超商取貨(全家)">超商取貨(全家)</option>
+                            <option value="超商取貨(7-11)">超商取貨(7-11)</option>
+                            <option value="中華郵政">中華郵政</option>
+                        </select>
+                    </div>
+                    <div class="shipping-options">
+                        <label for="location">寄送至</label>
+                        <input type="text" id="location" placeholder="全家">
+                        <button> <img src="location-icon.png" alt="Location Icon"> </button>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <h2>訂單資訊</h2>
+                    <table>
+                        <tr>
+                            <td>小計</td>
+                            <td>NT$200</td>
+                        </tr>
+                        <tr>
+                            <td>運費</td>
+                            <td>NT$60</td>
+                        </tr>
+                        <tr>
+                            <td>合計</td>
+                            <td>NT$260</td>
+                        </tr>
+                    </table>
+                    <div class="proceed-to-checkout">
+                        <button>前往結帳</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="note">
+            <p>您好! 感謝您選擇與 Mountain Glow Traces 購買商品！</p>
+            <p>配送方式可供選擇，詳見說明</p>
+            <ul>
+                <li>宅配到府：請填寫寄送地址及姓名，電話，並等候收貨，收貨時請檢查商品及配件是否完整無缺，若有任何問題，請立即與客服聯繫。</li>
+                <li>超商取貨：請填寫取貨人姓名及電話，並選擇取貨門市地址。選擇「全家」、「7-11」可選擇附近的門市，系統自動收集商品資料，可正常收件！</li>
+                <li>中華郵政：請填寫郵政地址及姓名，電話確認可收件地址，請選擇您希望的收件方式！</li>
+                <li>註：商品可能有部份需確認資料，請務必正確提供並確認資料無誤。感謝您的理解與配合，歡迎再次光臨。</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>Information about the company.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <p>Email: contact@example.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-column">
+                <h3>Follow Us</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+            </div>
+        </div>
+        <p>&copy; 2024 Mountain Glow Traces. All rights reserved.</p>
+    </footer>
+</body>
+</html>
