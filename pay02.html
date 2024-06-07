@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7EDEB;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-wrapper {
+            background-color: #D3B0A0;
+            padding-bottom: 10px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #A67E6B;
+            text-align: center;
+            padding: 20px 0;
+            color: #4A2E2B;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #4A2E2B;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #F1E6D5;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            margin: 0 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #4A2E2B;
+            font-size: 18px;
+        }
+
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .right img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+
+        .navbar .right span {
+            font-size: 18px;
+        }
+
+        .footer {
+            background-color: #D3B0A0;
+            color: #4A2E2B;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer .footer-column {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer .footer-column h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .footer .footer-column p,
+        .footer .footer-column a {
+            color: #4A2E2B;
+            text-decoration: none;
+        }
+
+        .footer .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border: 1px solid #E0E0E0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .step-indicator div {
+            width: 30px;
+            height: 30px;
+            background-color: #D3B0A0;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            color: #FFFFFF;
+            margin: 0 5px;
+        }
+
+        .step-indicator div.active {
+            background-color: #A67E6B;
+        }
+
+        .checkout-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .summary {
+            background-color: #F1E6D5;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .summary table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .summary th, .summary td {
+            border: 1px solid #A67E6B;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .summary th {
+            background-color: #D3B0A0;
+            color: #FFFFFF;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .form-section {
+            background-color: #F1E6D5;
+            width: 48%;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .form-section h2, .form-section h3 {
+            background-color: #D3B0A0;
+            color: white;
+            padding: 10px;
+            margin: 0 -20px 20px -20px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-section input[type="text"], .form-section input[type="email"], .form-section input[type="tel"], .form-section select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .proceed-to-checkout {
+            text-align: right;
+        }
+
+        .proceed-to-checkout button {
+            background-color: #A67E6B;
+            border: none;
+            color: #FFFFFF;
+            padding: 15px 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-wrapper">
+        <header class="header">
+            <h1>Mountain Glow Traces</h1>
+        </header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="right">
+                <img src="cart-icon.png" alt="Cart Icon">
+                <span>0</span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="step-indicator">
+            <div>1</div>
+            <div class="active">2</div>
+            <div>3</div>
+        </div>
+        <div class="checkout-section">
+            <div class="summary">
+                <h2>合計: NT$200</h2>
+                <table>
+                    <tr>
+                        <th>商品詳情</th>
+                        <th>單件價格</th>
+                        <th>數量</th>
+                        <th>小計</th>
+                    </tr>
+                    <tr>
+                        <td><img src="product.jpg" alt="Product" width="100"></td>
+                        <td>NT$200</td>
+                        <td>1</td>
+                        <td>NT$200</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">小計</td>
+                        <td>NT$200</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">運費</td>
+                        <td>NT$60</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">合計</td>
+                        <td>NT$260</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="form-container">
+                <div class="form-section">
+                    <h2>購買人資料</h2>
+                    <label for="buyer-name">購買人姓名</label>
+                    <input type="text" id="buyer-name">
+                    <label for="buyer-email">電子郵件</label>
+                    <input type="email" id="buyer-email">
+                    <label for="buyer-phone">行動電話</label>
+                    <input type="tel" id="buyer-phone">
+                    <label for="buyer-gender">性別</label>
+                    <input type="text" id="buyer-gender">
+                    <label for="buyer-birthday">生日</label>
+                    <input type="text" id="buyer-birthday">
+                </div>
+                <div class="form-section">
+                    <h2>出貨資料</h2>
+                    <label for="shipping-method">出貨方式選擇全家</label>
+                    <input type="checkbox" id="same-as-buyer" checked> 確認收件人資訊，同購買人資訊
+                    <label for="recipient-name">收件人姓名</label>
+                    <input type="text" id="recipient-name">
+                    <label for="recipient-phone">收件人電話號碼</label>
+                    <input type="tel" id="recipient-phone">
+                    <label for="recipient-address">填寫門市地址</label>
+                    <input type="text" id="recipient-address">
+                    <button>搜尋門市</button>
+                </div>
+                <div class="form-section" style="width: 48%;">
+                    <h2>付款資料</h2>
+                    <label for="payment-method">選擇超商貨到付款</label>
+                    <p>合計: NT$15</p>
+                </div>
+                <div class="form-section" style="width: 48%;">
+                    <h2>發票資料</h2>
+                    <label for="invoice-type">發票類型</label>
+                    <select id="invoice-type">
+                        <option value="">發票類型請選擇</option>
+                        <option value="個人發票">個人發票</option>
+                        <option value="公司發票">公司發票</option>
+                    </select>
+                    <label for="invoice-number">請輸入手機條碼</label>
+                    <input type="text" id="invoice-number">
+                    <p>合計: NT$150</p>
+                </div>
+            </div>
+            <div class="proceed-to-checkout">
+                <button>確認結帳</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>關於我們</h3>
+                <p>這裡放置公司資訊、簡介等。</p>
+            </div>
+            <div class="footer-column">
+                <h3>聯繫我們</h3>
+                <p>地址：某某市某某街123號</p>
+                <p>電話：1234-5678</p>
+                <p>電子郵件：info@example.com</p>
+            </div>
+            <div class="footer-column">
+                <h3>社群媒體</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
