@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品頁面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F7EDEB;
+            margin: 0;
+            padding: 0;
+
+        }
+
+
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .filter-section {
+            width: 250px;
+            padding: 20px;
+            background-color: #F7EDEB;
+            border: 1px solid #D3B0A0;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .filter-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .filter-section label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .filter-section input[type="radio"],
+        .filter-section input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .filter-section .price-range {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .filter-section .price-range input {
+            width: 45%;
+            padding: 5px;
+            border: 1px solid #D3B0A0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .filter-section button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #D3B0A0;
+            color: #4A2E2B;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        .products-section {
+            flex: 1;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .products-header h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .products-header select {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #D3B0A0;
+            border-radius: 5px;
+        }
+
+        .new-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            flex: 1;
+        }
+
+        .new-gallery .product-card {
+            width: calc(25% - 10px);
+            margin-bottom: 20px;
+            background-color: #fff;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        .new-gallery .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .new-gallery .product-card .product-info {
+            padding: 10px 0;
+        }
+
+        .new-gallery .product-card .product-info h3 {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .new-gallery .product-card .product-info p {
+            margin: 5px 0;
+            color: #777;
+        }
+
+        .new-gallery .product-card .product-info .price {
+            margin: 10px 0;
+            font-size: 16px;
+            color: #E74C3C;
+        }
+
+        .new-gallery .product-card button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border: none;
+            background-color: #D3B0A0;
+            color: #4A2E2B;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #D3B0A0;
+            color: #4A2E2B;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .footer .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer .footer-column {
+            flex: 1;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .footer .footer-column h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .footer .footer-column p,
+        .footer .footer-column a {
+            color: #4A2E2B;
+            text-decoration: none;
+        }
+
+        .footer .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        /* ..................... */
+        .header {
+            background-color: #d8c2ad;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 999;
+        }
+
+        .header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .header .inquire-button {
+            padding: 10px 20px;
+            background-color: #c0a28b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .cart-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+        .header {
+            background-color: #d8c2ad;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 999;
+        }
+
+        .header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .header nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .header .inquire-button {
+            padding: 10px 20px;
+            background-color: #c0a28b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .cart-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+
+        .cart-modal {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+            z-index: 1002;
+        }
+
+        .cart-modal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-modal-item img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .checkout-button {
+            padding: 10px;
+            background-color: #E1CFC0;
+            color: #684E45;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .checkout-button:hover {
+            background-color: #684E45;
+            color: #fff;
+        }
+        /* 區塊05 */
+        /* footer */
+        .footer-img {
+    background-color: #EDEDED;
+    padding: 10px 0;
+}
+
+.header-images {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-images img {
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href=""><img src="./images/05.png" alt=""></a></div>
+        <nav>
+            <a href="#">關於我們</a>
+            <a href="#">所有款式</a>
+            <a href="#">依照水晶效果</a>
+            <a href="#">依照水晶色系</a>
+        </nav>
+        <div class="cart-icon" onclick="toggleCartModal()">
+            <img src="cart-icon.png" alt="購物車">
+            <div class="cart-count" id="cartCount">0</div>
+            <div class="cart-modal" id="cartModal">
+                <div class="cart-modal-items" id="cartModalItems"></div>
+                <div class="checkout-button">訂單結帳</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Filter Section -->
+        <aside class="filter-section">
+            <h2>商品篩選</h2>
+            <label>
+                <input type="checkbox"> 星座吊飾訂製款
+            </label>
+            <label>飾品金屬材質篩選</label>
+            <label>
+                <input type="radio" name="material" value="14k金"> 14k金
+            </label>
+            <label>
+                <input type="radio" name="material" value="18k金"> 18k金
+            </label>
+            <label>鑲嵌圈篩選</label>
+            <label>
+                <input type="radio" name="setting" value="金色款" checked> 金色款
+            </label>
+            <label>
+                <input type="radio" name="setting" value="玫瑰金款"> 玫瑰金款
+            </label>
+            <label>
+                <input type="checkbox"> 一般吊飾訂製款
+            </label>
+            <label>飾品金屬材質篩選</label>
+            <label>
+                <input type="radio" name="material2" value="14k金"> 14k金
+            </label>
+            <label>
+                <input type="radio" name="material2" value="18k金"> 18k金
+            </label>
+            <label>鑲嵌圈篩選</label>
+            <label>
+                <input type="radio" name="setting2" value="金色款"> 金色款
+            </label>
+            <label>
+                <input type="radio" name="setting2" value="玫瑰金款"> 玫瑰金款
+            </label>
+            <label>
+                <input type="checkbox"> 手鏈訂製款
+            </label>
+            <label>飾品金屬材質篩選</label>
+            <label>
+                <input type="radio" name="material3" value="14k金"> 14k金
+            </label>
+            <label>
+                <input type="radio" name="material3" value="18k金"> 18k金
+            </label>
+            <label>鑲嵌圈篩選</label>
+            <label>
+                <input type="radio" name="setting3" value="金色款"> 金色款
+            </label>
+            <label>
+                <input type="radio" name="setting3" value="玫瑰金款"> 玫瑰金款
+            </label>
+            <div class="price-range">
+                <input type="text" placeholder="最小金額">
+                <input type="text" placeholder="最大金額">
+            </div>
+            <button type="button">確認篩選</button>
+        </aside>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="products-header">
+                <h2>商品列表</h2>
+                <div class="filters">
+                    <select>
+                        <option value="default">排序方式</option>
+                        <option value="price-asc">價格：低到高</option>
+                        <option value="price-desc">價格：高到低</option>
+                        <option value="popularity">人氣排序</option>
+                    </select>
+                    <select>
+                        <option value="default">顯示方式</option>
+                        <option value="grid">網格顯示</option>
+                        <option value="list">列表顯示</option>
+                    </select>
+                </div>
+            </div>
+            <div class="new-gallery">
+                <div class="product-card">
+                    <img src="./images/item/01.png" alt="歲月時光 | 一般吊飾">
+                    <div class="product-info">
+                        <h3>歲月時光 | 一般吊飾</h3>
+                        <p>斑駁的時鐘刻畫歲月鐘擺</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/02.png" alt="林間晨鹿 | 一般吊飾">
+                    <div class="product-info">
+                        <h3>林間晨鹿 | 一般吊飾</h3>
+                        <p>深林秘境金色晨鹿</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/06.png" alt="絢爛摩天| 一般吊飾">
+                    <div class="product-info">
+                        <h3>絢爛摩天| 一般吊飾</h3>
+                        <p>夏日繽紛樂園</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/07.png" alt="巨蟹座 | 星座吊飾">
+                    <div class="product-info">
+                        <h3>巨蟹座 | 星座吊飾</h3>
+                        <p>優雅粉大理石閃爍光</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/05.png" alt="射手座 | 星座吊飾">
+                    <div class="product-info">
+                        <h3>射手座 | 星座吊飾</h3>
+                        <p>神秘變燙勇敢探險</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/03.png" alt="波光潋滟 | 單色琉璃">
+                    <div class="product-info">
+                        <h3>雲境天馬 | 一般吊飾</h3>
+                        <p>撲騰雲際金色天馬</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/06.png" alt="河流海髮 | 單色琉璃">
+                    <div class="product-info">
+                        <h3>夏日葵花 | 一般吊飾</h3>
+                        <p>金黃的向日葵迎接盛夏時光</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="./images/item/08.png" alt="雙魚座 | 星座吊飾">
+                    <div class="product-info">
+                        <h3>雙魚座 | 星座吊飾</h3>
+                        <p>波光躍動的神話魚</p>
+                        <p class="price">NT$150</p>
+                        <button>可客製</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>關於我們</h3>
+                <p>這裡放置公司資訊、簡介等。</p>
+            </div>
+            <div class="footer-column">
+                <h3>聯繫我們</h3>
+                <p>地址：某某市某某街123號</p>
+                <p>電話：1234-5678</p>
+                <p>電子郵件：info@example.com</p>
+            </div>
+            <div class="footer-column">
+                <h3>社群媒體</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
